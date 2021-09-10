@@ -37,18 +37,13 @@ jobs:
              node-version: 14
          - run: npm install -g mocha
          - run: npm test
-      Notify-on-slack:
+    slackNotification:
+         name: Slack Notification
          runs-on: ubuntu-latest
-         name: slack notification
-         needs: Build-Job
-         #if: github.ref! = 'refs/heads/production'
-         steps:
-         - uses: actions/checkout@v1
-         - name: Testnotifications
-           uses: rtCamp/action-slack-notify@master
-           env:
+        steps:
+          - uses: actions/checkout@v2
+          - name: Slack Notification
+            uses: rtCamp/action-slack-notify@v2
+            env:
               SLACK_WEBHOOK: https://hooks.slack.com/services/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
-              SLACK_TITLE: WORKFLOW 
-              SLACK_USERNAME: AJAY
-              SLACK_MASSAGE: 1)Buildjob- ${{needs.Build-job.result}}
 
