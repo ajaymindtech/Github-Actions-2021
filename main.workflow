@@ -38,8 +38,9 @@ jobs:
          - run: npm install -g mocha
          - run: npm test
     slackNotification:
-         name: Slack Notification
          runs-on: ubuntu-latest
+         name: Slack Notification
+         needs: Build-Job
         steps:
           - uses: actions/checkout@v2
           - name: Slack Notification
