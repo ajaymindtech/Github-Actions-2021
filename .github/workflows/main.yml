@@ -39,12 +39,13 @@ jobs:
          - run: npm test
     slackNotification:
          runs-on: ubuntu-latest
-         name: Slack Notification
+         name: slacknotification
          needs: Build-Job
-        steps:
-          - uses: actions/checkout@v2
-          - name: Slack Notification
-            uses: rtCamp/action-slack-notify@v2
-            env:
+         #if: github.ref! = 'refs/heads/production'
+         steps:
+         - uses: actions/checkout@v1
+         - name: notificationsdata
+           uses: rtCamp/action-slack-notify@v2
+           env:
               SLACK_WEBHOOK: https://hooks.slack.com/services/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
 
